@@ -1,10 +1,7 @@
 package com.example.twitterclone.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,12 +15,16 @@ public class Message {
     private Long id;
     private String text;
     private String tag;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Message(){}
 
-    public Message(String text, String tag) {
+    public Message(String text, String tag, User user) {
         this.text = text;
         this.tag = tag;
+        this.user = user;
     }
 
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div th:if="${param.error}">
+  Invalid
+</div>
+
+<div th:if="${param.logout}">
+  You have been logged out
+</div>
+
+<form th:action="@{/users/update/{id}(id=${user.id})}" method="post" th:object="${user}">
+  <div><label>First Name : <input id="firstName" type="text" required name="firstName" th:value="${user.firstName}"></label></div>
+  <div><label>Last Name : <input id="lastName" type="text" required name="lastName" th:value="${user.lastName}"></label></div>
+  <div><label>Email : <input id="email" type="email" required name="email" th:value="${user.email}"></label></div>
+  <div th:each="role : ${roles}">
+    <div>
+      <label>
+        <input type="checkbox" th:name="${role}" th:checked="${user.roles.contains(role)}" />
+        <span th:text="${role}"></span>
+      </label>
+    </div>
+  </div>
+  <div><input type="submit" value="Sign up"></div>
+</form>
+</body>
+</html>

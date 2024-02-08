@@ -5,13 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="greeting" th:method="post">
+<form th:action="@{/greeting}" th:method="post">
     <input type="text" name="text" placeholder="Input message" th:text="${name}">
     <input type="text" name="tag" placeholder="Tag" th:text="${tag}">
     <button type="submit">Add</button>
 </form>
 
-<form th:action="greeting/filter" th:method="post">
+<form th:action="@{/greeting/filter}" th:method="post">
     <input type="search" name="tagFilter">
     <button type="submit">Find</button>
 </form>
@@ -21,6 +21,7 @@
     <b th:text="${message.id}"></b>
     <span th:text="${message.text}"></span>
     <i th:text="${message.tag}"></i>
+    <span th:text="${message.user.getFirstName}"></span>
 </div>
 </body>
 </html>
