@@ -43,7 +43,7 @@ public class CustomSecurity {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(autohorize ->
-                        autohorize.requestMatchers("/", "/greeting/**", "/users/**")
+                        autohorize.requestMatchers("/", "/greeting/**", "/users/**", "/static/**")
                                 .permitAll())
                 .formLogin(form ->
                         form.loginPage("/users/login")
